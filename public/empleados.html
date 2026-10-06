@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Empleados</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header_contenido">
+            <img src="img/logo_empleados.png" alt="Logo Empleados" class="header_logo">
+            <h1>Gestión de Empleados</h1>
+        </div>
+    </header>
+
+    <main class="main_container">
+        <!-- Columna Izquierda -->
+        <div class="panel_formularios">
+            <!-- Mostrar todos los empleados -->
+            <section class="seccion_card">
+                <h2>Mostrar todos los empleados</h2>
+                <button id="btn_mostrar">Mostrar todos los empleados</button>
+            </section>
+
+            <!-- Buscar empleado por id -->
+            <section class="seccion_card">
+                <h2>Buscar empleado</h2>
+                <form onsubmit="event.preventDefault();">
+                    <div class="form_group">
+                        <input type="number" id="id_empleado" placeholder="ID Empleado" required>
+                        <button type="submit" id="btn_buscar">Buscar empleado</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Buscar empleados por provincia -->
+            <section class="seccion_card">
+                <h2>Buscar por provincia</h2>
+                <div class="form_group">
+                    <select id="filtro_provincia" required>
+                        <option value="" disabled selected>Seleccione provincia</option>
+                        <option value="San Jose">San José</option>
+                        <option value="Alajuela">Alajuela</option>
+                        <option value="Cartago">Cartago</option>
+                        <option value="Heredia">Heredia</option>
+                        <option value="Guanacaste">Guanacaste</option>
+                        <option value="Puntarenas">Puntarenas</option>
+                        <option value="Limon">Limón</option>
+                    </select>
+                    <button id="btn_filtrar_provincia">Buscar empleado por provincia</button>
+                </div>
+            </section>
+
+            <!-- Top 10 Salarios -->
+            <section class="seccion_card">
+                <h2>Top 10 salarios</h2>
+                <div class="form_group">
+                    <button id="btn_top_salarios">Top 10 salarios</button>
+                </div>
+            </section>
+
+            <!-- Agregar nuevo empleado -->
+            <section class="seccion_card">
+                <h2>Agregar empleado</h2>
+                <form onsubmit="event.preventDefault();">
+                    <div class="form_group">
+                        <input type="text" id="nombre_empleado" placeholder="Nombre" required>
+                        <input type="text" id="apellido_empleado" placeholder="Apellido" required>
+                        <input type="number" id="edad_empleado" placeholder="Edad" required>
+
+                        <select id="id_departamento_empleado" required>
+                            <option value="" disabled selected>Seleccione departamento</option>
+                            <option value="1">IT</option>
+                            <option value="2">Ventas</option>
+                            <option value="3">RRHH</option>
+                            <option value="4">Finanzas</option>
+                            <option value="5">Marketing</option>
+                            <option value="6">Soporte</option>
+                        </select>
+
+                        <input type="number" id="salario_empleado" placeholder="Salario" required>
+
+                        <select id="provincia_empleado" required>
+                            <option value="" disabled selected>Seleccione provincia</option>
+                            <option value="San Jose">San José</option>
+                            <option value="Alajuela">Alajuela</option>
+                            <option value="Cartago">Cartago</option>
+                            <option value="Heredia">Heredia</option>
+                            <option value="Guanacaste">Guanacaste</option>
+                            <option value="Puntarenas">Puntarenas</option>
+                            <option value="Limon">Limón</option>
+                        </select>
+
+                        <button type="submit" id="btn_agregar">Agregar empleado</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Actualizar empleado -->
+            <section class="seccion_card">
+                <h2>Actualizar empleado</h2>
+                <form onsubmit="event.preventDefault();">
+                    <div class="form_group">
+                        <!-- Buscar por ID para cargar los datos -->
+                        <input type="number" id="actualizar_id_empleado" placeholder="ID a actualizar" required>
+                        <button type="button" id="btn_buscar_actualizar">Buscar ID</button>
+                    </div>
+
+                    <div id="seccion_campos_actualizar" class="seccion-desplegable" style="display: none;">
+                        <!-- Campos editables -->
+                        <input type="text" id="actualizar_nombre_empleado" placeholder="Nuevo Nombre">
+                        <input type="text" id="actualizar_apellido_empleado" placeholder="Nuevo Apellido">
+                        <input type="number" id="actualizar_edad_empleado" placeholder="Nueva Edad">
+
+                        <select id="actualizar_id_departamento_empleado">
+                            <option value="" disabled selected>Seleccione nuevo departamento</option>
+                            <option value="1">IT</option>
+                            <option value="2">Ventas</option>
+                            <option value="3">RRHH</option>
+                            <option value="4">Finanzas</option>
+                            <option value="5">Marketing</option>
+                            <option value="6">Soporte</option>
+                        </select>
+
+                        <input type="number" id="actualizar_salario_empleado" placeholder="Nuevo Salario">
+
+                        <select id="actualizar_provincia_empleado">
+                            <option value="" disabled selected>Seleccione nueva provincia</option>
+                            <option value="San Jose">San José</option>
+                            <option value="Alajuela">Alajuela</option>
+                            <option value="Cartago">Cartago</option>
+                            <option value="Heredia">Heredia</option>
+                            <option value="Guanacaste">Guanacaste</option>
+                            <option value="Puntarenas">Puntarenas</option>
+                            <option value="Limon">Limón</option>
+                        </select>
+
+                        <button type="submit" id="btn_actualizar">Actualizar empleado</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Eliminar empleado por id -->
+            <section class="seccion_card">
+                <h2>Eliminar empleado</h2>
+                <form onsubmit="event.preventDefault();">
+                    <div class="form_group">
+                        <input type="number" id="id_eliminar_empleado" placeholder="ID Empleado a eliminar" required>
+                        <button type="submit" id="btn_eliminar">Eliminar empleado</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Salario promedio por provincia -->
+            <section class="seccion_card">
+                <h2>Salario promedio</h2>
+                <div class="form_group">
+                    <button id="btn_promedio_provincia">Salario promedio provincia</button>
+                </div>
+            </section>
+
+            <!-- Export y Backup -->
+            <section class="seccion_card">
+                <h2>Exportación y Respaldo</h2>
+                <div class="form_group">
+                    <button id="btn_exportar_empleados">Export</button>
+                    <button id="btn_backup_db">Backup</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Ventana modal -->
+        <div id="mi_modal" class="modal-overlay">
+            <div class="modal-content">
+                <p id="contenido_modal" class="modal-text"></p>
+                <button onclick="cerrar_modal()" class="modal-btn">Aceptar</button>
+            </div>
+        </div>
+
+        <!-- Columna derecha -->
+        <div class="panel_tabla seccion_card">
+            <h2>Lista de empleados</h2>
+            <div class="contenedor_tabla">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id_empleado</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Edad</th>
+                            <th>Id_departamento</th>
+                            <th>Salario</th>
+                            <th>Provincia</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla_empleados">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/empleados.js"></script>
+
+</body>
+
+</html>
